@@ -3,10 +3,10 @@ package com.epam.training.student_Olga_Vinogradova.fundamentals1.abstractClasses
 import java.util.ArrayList;
 import java.util.List;
 
-public class Quarilateral extends Figure {
+public class Quadrilateral extends Figure {
     private Point a, b, c, d;
 
-    public Quarilateral(Point a, Point b, Point c, Point d) {
+    public Quadrilateral(Point a, Point b, Point c, Point d) {
         this.a = a;
         this.b = b;
         this.c = c;

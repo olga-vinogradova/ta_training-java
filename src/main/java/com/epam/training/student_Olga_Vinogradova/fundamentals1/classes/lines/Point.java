@@ -1,4 +1,4 @@
-package com.epam.training.student_Olga_Vinogradova.fundamentals1.classes;
+package com.epam.training.student_Olga_Vinogradova.fundamentals1.classes.lines;
 
 public class Point {
     private final int x;

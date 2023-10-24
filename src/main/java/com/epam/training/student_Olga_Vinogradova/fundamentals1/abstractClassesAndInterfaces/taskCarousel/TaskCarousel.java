@@ -1,4 +1,6 @@
-package com.epam.training.student_Olga_Vinogradova.fundamentals1.abstractClassesAndInterfaces;
+package com.epam.training.student_Olga_Vinogradova.fundamentals1.abstractClassesAndInterfaces.taskCarousel;
+
+import com.epam.training.student_Olga_Vinogradova.fundamentals1.abstractClassesAndInterfaces.taskCarousel.Task;
 
 public class TaskCarousel {
     private Task[] tasks;

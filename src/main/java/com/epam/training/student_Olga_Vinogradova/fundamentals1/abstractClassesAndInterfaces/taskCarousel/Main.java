@@ -1,4 +1,4 @@
-package com.epam.training.student_Olga_Vinogradova.fundamentals1.abstractClassesAndInterfaces;
+package com.epam.training.student_Olga_Vinogradova.fundamentals1.abstractClassesAndInterfaces.taskCarousel;
 
 public class Main {
     public static void main(String[] args) {
