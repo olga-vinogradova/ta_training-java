@@ -1,8 +1,10 @@
 package com.epam.training.student_Olga_Vinogradova.fundamentals2.cloudPage;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -22,15 +24,15 @@ public class CloudPricingPage {
     private By machineTypeSelectOption = By.xpath("//md-option[@value='CP-COMPUTEENGINE-VMIMAGE-N1-STANDARD-8']");
     private By addGPUsCheckbox = By.xpath("//md-checkbox[@aria-label='Add GPUs']");
     private By gpuTypeDropdown = By.xpath( "//md-select[@placeholder='GPU type']");
-    private By gpuTypeSelectOption = By.xpath("////md-option[@value='NVIDIA_TESLA_V100']");
+    private By gpuTypeSelectOption = By.xpath("//md-option[@value='NVIDIA_TESLA_V100']");
     private By numberOfGPUsDropdown = By.xpath("//md-select[@placeholder='Number of GPUs']");
     private By numberOfGPUSelectOption = By.xpath("//md-option[@value='1']");
     private By localSSDDropdown = By.xpath("//md-select[@placeholder='Local SSD']");
-    private By localSSDSelectOption = By.xpath("//md-option[@value='2']");
+    private By localSSDSelectOption = By.xpath("//md-option[@id='select_option_491'][@value='2']");
     private By datacenterLocationDropdown = By.xpath("//md-select[@placeholder='Datacenter location']");
     private By datacenterLocationSelectOption = By.xpath("//md-option[@value='europe-west3']");
-    private By committedUsageDropdown = By.xpath("//md-select[@placeholder='Committed usage']");
-    private By committedUsageSelectOption = By.xpath("//md-option[@value='1']/div[text()='1 Year']");
+    private By committedUsageDropdown = By.xpath("//md-select[@id='select_139'][@placeholder='Committed usage']");
+    private By committedUsageSelectOption = By.xpath("//md-option[@id='select_option_137'][@ng-value='1'][@value='1']");
     private By addToEstimateButton = By.xpath("//button[contains(text(), 'Add to Estimate')]");
 
 
@@ -104,48 +106,71 @@ public class CloudPricingPage {
         return driver.findElement(addToEstimateButton);
     }
 
+    public WebElement waitToClickTheElement(WebElement element) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        return wait.until(ExpectedConditions.elementToBeClickable(element));
+    }
 
     public void fillOutNumberOfInstances() {
-        WebDriverWait waitForCalculatorTest = new WebDriverWait(driver, Duration.ofSeconds(50));
+        WebDriverWait waitForCalculatorTest = new WebDriverWait(driver, Duration.ofSeconds(20));
         waitForCalculatorTest.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//iframe[contains(@name,'goog_')]")));
         driver.switchTo().frame(driver.findElement(By.xpath("//iframe[contains(@name,'goog_')]")));
         driver.switchTo().frame("myFrame");
-        getNumberOfInstancesInput().sendKeys("4");
+        WebElement instancesInput = getNumberOfInstancesInput();
+        waitToClickTheElement(instancesInput).sendKeys("4");
     }
 
-    public void fillOutSeries(){
-        getSeriesDropdown().click();
-        getSeriesSelectOption().click();
+    public void fillOutSeries() {
+        WebElement seriesDropdown = getSeriesDropdown();
+        WebElement seriesSelectOption = getSeriesSelectOption();
+        waitToClickTheElement(seriesDropdown).click();
+        waitToClickTheElement(seriesSelectOption).click();
     }
 
     public void fillOutMachine() {
-            getMachineTypeDropdown().click();
-            getMachineTypeSelectOption().click();
+        WebElement machineTypeDropdown = getMachineTypeDropdown();
+        WebElement machineTypeSelectOption = getMachineTypeSelectOption();
+        waitToClickTheElement(machineTypeDropdown).click();
+        waitToClickTheElement(machineTypeSelectOption).click();
     }
 
-    public void fillOutGPU(){
-        getAddGPUsCheckbox().click();
-        getGpuTypeDropdown().click();
-        getGpuTypeSelectOption().click();
-        getNumberOfGPUsDropdown().click();
-        getNumberOfGPUSelectOption().click();
+    public void fillOutGPU() {
+        WebElement addGPUsCheckbox = getAddGPUsCheckbox();
+        WebElement gpuTypeDropdown = getGpuTypeDropdown();
+        WebElement gpuTypeSelectOption = getGpuTypeSelectOption();
+        WebElement numberOfGPUsDropdown = getNumberOfGPUsDropdown();
+        WebElement numberOfGPUSelectOption = getNumberOfGPUSelectOption();
 
+        waitToClickTheElement(addGPUsCheckbox).click();
+        waitToClickTheElement(gpuTypeDropdown).click();
+        waitToClickTheElement(gpuTypeSelectOption).click();
+        waitToClickTheElement(numberOfGPUsDropdown).click();
+        waitToClickTheElement(numberOfGPUSelectOption).click();
     }
 
-    public void fillSSD(){
-        getLocalSSDDropdown().click();
-        getLocalSSDSelectOption().click();
+    public void fillSSD() {
+        WebElement localSSDDropdown = getLocalSSDDropdown();
+        WebElement localSSDSelectOption = getLocalSSDSelectOption();
+        waitToClickTheElement(localSSDDropdown).click();
+        waitToClickTheElement(localSSDSelectOption).click();
     }
-    public void fillLocation(){
-        getDatacenterLocationDropdown().click();
-        getDatacenterLocationSelectOption().click();
+
+    public void fillLocation() {
+        WebElement datacenterLocationDropdown = getDatacenterLocationDropdown();
+        WebElement datacenterLocationSelectOption = getDatacenterLocationSelectOption();
+        waitToClickTheElement(datacenterLocationDropdown).click();
+        waitToClickTheElement(datacenterLocationSelectOption).click();
     }
-    public void fillCommittedUsage(){
-        getCommittedUsageDropdown().click();
-        getCommittedUsageSelectOption().click();
+
+    public void fillCommittedUsage() {
+        WebElement committedUsageDropdown = getCommittedUsageDropdown();
+        WebElement committedUsageSelectOption = getCommittedUsageSelectOption();
+        waitToClickTheElement(committedUsageDropdown).click();
+        waitToClickTheElement(committedUsageSelectOption).click();
     }
 
     public void clickAddToEstimate() {
-        getAddToEstimateButton().click();
+        WebElement addToEstimateButton = getAddToEstimateButton();
+        waitToClickTheElement(addToEstimateButton).click();
     }
 }
